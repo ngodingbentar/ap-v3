@@ -343,7 +343,9 @@ export default function OrderScreen(props) {
                   {/* <button onClick={() => setmystatus('PengecekanPembayaran')}>setmystatus</button> */}
                   {/* <p>mystatus {mystatus}</p> */}
                   <h5>ID pesanan : {order._id}</h5>
-                  <h5>Batas Waktu Pembayaran : {waktu}</h5>
+                  {!order.isPaid && (
+                    <h5>Batas Waktu Pembayaran : {waktu}</h5>
+                  )}
                   {/* <p><b>Status1 : {orderStatus}</b></p> */}
                   <h5>
                     Status : 

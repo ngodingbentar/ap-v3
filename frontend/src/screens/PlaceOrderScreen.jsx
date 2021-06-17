@@ -92,9 +92,9 @@ export default function PlaceOrderScreen(props) {
   }, [cart, dispatch, kurir, loadingBiaya, order, ongkir, ongkirPos, ongkirTiki, props.history, success]);
   
 
-  const cek = () => {
-    console.log(userInfo)
-  }
+  // const cek = () => {
+  //   console.log(userInfo)
+  // }
 
   
   return (
@@ -105,7 +105,7 @@ export default function PlaceOrderScreen(props) {
           <ul>
             <li>
               <div className="card card-body">
-                <button onClick={() => console.log(cart)}>cek</button>
+                {/* <button onClick={() => console.log(cart)}>cek</button> */}
                 <h3>Kurir</h3>
                 {biayaAlert && (
                   <MessageBox variant="danger">Anda belum memilih kurir</MessageBox>
