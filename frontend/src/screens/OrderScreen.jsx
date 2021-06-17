@@ -334,7 +334,17 @@ export default function OrderScreen(props) {
                 {/* <p>Batas Waktu Pembayaran : {new Date(waktu)}</p> */}
                 {/* <div>{new Date(waktu).toString()}</div> */}
                 <p><b>Batas Waktu Pembayaran : </b>{waktu}</p>
-                <p><b>Status : {orderStatus}</b></p>
+                {/* <p><b>Status : {orderStatus}</b></p> */}
+                <p>
+                  Status : 
+                  {
+                  (orderStatus === 'MenungguPembayaran') ? (<span>Menunggu Pembayaran</span>) :
+                  (orderStatus === 'PengecekanPembayaran') ? (<span>Pengecekan Pembayaran</span>) :
+                  (orderStatus === 'MenungguPengiriman') ? (<span>Menunggu Pengiriman</span>) :
+                  (orderStatus === 'BarangDikirim') ? (<span>Barang Dikirim</span>) :
+                  (<span>Proses</span>)
+                  }
+                </p>
                 <button onClick={() => console.log(order)}>cek</button>
                 <h5>ID pesanan : {order._id}</h5>
                 <h3>Pengiriman</h3>
