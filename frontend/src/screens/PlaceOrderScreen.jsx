@@ -50,9 +50,11 @@ export default function PlaceOrderScreen(props) {
   cart.uniqueCode = cart.shippingAddress.uniqueCode
   cart.phone = cart.shippingAddress.phone
   cart.courierName = courierName
+  cart.status = 'Menunggu Pembayaran'
   const dispatch = useDispatch();
 
   const placeOrderHandler = () => {
+    // dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
     if(biaya){
       dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
     } else {
@@ -103,6 +105,7 @@ export default function PlaceOrderScreen(props) {
           <ul>
             <li>
               <div className="card card-body">
+                <button onClick={() => console.log(cart)}>cek</button>
                 <h3>Kurir</h3>
                 {biayaAlert && (
                   <MessageBox variant="danger">Anda belum memilih kurir</MessageBox>

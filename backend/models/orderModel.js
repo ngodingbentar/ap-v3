@@ -47,7 +47,8 @@ const orderSchema = new mongoose.Schema(
     confirmImg: {type: String, required: false},
     courier: {type: String, required: true},
     courierName: {type: String, required: true},
-    resi: { type: String, required: false }
+    resi: { type: String, required: false },
+    status: { type: String, required: false }
   },
   {
     timestamps: true,

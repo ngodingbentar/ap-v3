@@ -6,6 +6,7 @@ import MessageBox from '../components/MessageBox';
 import { Button } from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
 export default function OrderListScreen(props) {
@@ -74,6 +75,11 @@ export default function OrderListScreen(props) {
     }
   }
 
+  const selectOptions = {
+    true: 'Sudah',
+    false: 'Belum',
+  };
+
   // table
   const columns = [{
     dataField: '_id',
@@ -103,7 +109,11 @@ export default function OrderListScreen(props) {
     dataField: 'isPaid',
     text: 'Terbayar',
     sort: true,
-    formatter: paidFormatter,
+    // formatter: paidFormatter,
+    formatter: cell => selectOptions[cell],
+    filter: selectFilter({
+      options: selectOptions
+    })
   },{
     dataField: 'isDelivered',
     text: 'Dikirim',
@@ -169,6 +179,7 @@ export default function OrderListScreen(props) {
                 <BootstrapTable
                   { ...props.baseProps }
                   pagination={ paginationFactory() }
+                  filter={ filterFactory() }
                 />
               </div>
             )
