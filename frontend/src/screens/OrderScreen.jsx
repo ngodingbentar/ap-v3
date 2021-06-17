@@ -61,6 +61,7 @@ export default function OrderScreen(props) {
   const [waktu, setWaktu] = useState(0);
   const [backLink, setBackLink] = useState('/riwayat-pesanan');
   const [orderStatus, setOrderStatus] = useState('Proses');
+  const [mystatus, setmystatus] = useState('');
   const [changeStatus, setChangeStatus] = useState(false);
 
   const sekarang = Date.now()
@@ -72,15 +73,18 @@ export default function OrderScreen(props) {
       if(changeStatus){
         console.log('changeStatus')
         setOrderStatus('PengecekanPembayaran')
+        setmystatus('PengecekanPembayaran')
         setChangeStatus(false)
       }
     }
     if(order && !loading){
       if(orderStatus === 'Proses'){
         console.log('orderStatus = changeStatus')
-        setOrderStatus('PengecekanPembayaran')
+        setOrderStatus(order.status)
+        // setOrderStatus('PengecekanPembayaran')
+        // setmystatus('PengecekanPembayaran')
       }
-      setOrderStatus(order.status)
+      // setOrderStatus(order.status)
       if(!cekCreated){
         setWaktu(new Date(Date.parse(order.createdAt)+86400000).toString().substring(4, 21))
         if((Date.parse(order.createdAt)+86400000) < sekarang){
@@ -333,23 +337,28 @@ export default function OrderScreen(props) {
           <ul>
             <li>
               <div className="card no-border">
-                {/* <p>Batas Waktu Pembayaran : {new Date(waktu)}</p> */}
-                {/* <div>{new Date(waktu).toString()}</div> */}
-                <p><b>Batas Waktu Pembayaran : </b>{waktu}</p>
-                <p><b>Status1 : {orderStatus}</b></p>
-                <p>
-                  Status2 : 
-                  {
-                  (orderStatus === 'MenungguPembayaran') ? (<span>Menunggu Pembayaran</span>) :
-                  (orderStatus === 'PengecekanPembayaran') ? (<span>Pengecekan Pembayaran</span>) :
-                  (orderStatus === 'MenungguPengiriman') ? (<span>Menunggu Pengiriman</span>) :
-                  (orderStatus === 'BarangDikirim') ? (<span>Barang Dikirim</span>) :
-                  (<span>Proses</span>)
-                  }
-                </p>
-                <button onClick={() => console.log(orderStatus)}>cek</button>
-                <h5>ID pesanan : {order._id}</h5>
-                <h3>Pengiriman</h3>
+                <div>
+                  {/* <p>Batas Waktu Pembayaran : {new Date(waktu)}</p> */}
+                  {/* <div>{new Date(waktu).toString()}</div> */}
+                  {/* <button onClick={() => setmystatus('PengecekanPembayaran')}>setmystatus</button> */}
+                  {/* <p>mystatus {mystatus}</p> */}
+                  <h5>ID pesanan : {order._id}</h5>
+                  <h5>Batas Waktu Pembayaran : {waktu}</h5>
+                  {/* <p><b>Status1 : {orderStatus}</b></p> */}
+                  <h5>
+                    Status : 
+                    {
+                    (orderStatus === 'MenungguPembayaran') ? (<span>Menunggu Pembayaran</span>) :
+                    (orderStatus === 'PengecekanPembayaran') ? (<span>Pengecekan Pembayaran</span>) :
+                    (orderStatus === 'MenungguPengiriman') ? (<span>Menunggu Pengiriman</span>) :
+                    (orderStatus === 'BarangDikirim') ? (<span>Barang Dikirim</span>) :
+                    (<span>Proses</span>)
+                    }
+                  </h5>
+                  {/* <button onClick={() => console.log(orderStatus)}>cek</button> */}
+                </div>
+                
+                <h3 className="mt-4">Pengiriman</h3>
                 <p>
                   <strong>Nama :</strong> {order.shippingAddress.fullName} <br />
                   <strong>No Telp. :</strong> {(order.phone.substring(0,1) === '8' ? (<span>0</span>):(<span></span>))}{order.phone} <br />
