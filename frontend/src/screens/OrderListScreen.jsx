@@ -30,6 +30,22 @@ export default function OrderListScreen(props) {
     )
   }
 
+  
+
+  function confirmImgFormatter(cell, row){
+    if(cell){
+      return (
+        <span>Sudah</span>
+      )
+    }else {
+      return (
+        <span>Belum</span>
+      )
+    }
+    
+  }
+
+
   function statusFormatter(cell, row){
     const timestamp = Date.parse(cell)
     const sekarang = Date.now()
@@ -94,6 +110,11 @@ export default function OrderListScreen(props) {
     sort: true,
     formatter: paidFormatter,
   },{
+    dataField: 'confirmImg',
+    text: 'Bukti',
+    sort: true,
+    formatter: confirmImgFormatter,
+  },{
     dataField: "link",
     text: "Aksi",
     formatter: (rowContent, row) => {
@@ -137,6 +158,7 @@ export default function OrderListScreen(props) {
                 <div className="rowC">
                   <div>
                     <h3>Daftar Pesanan</h3>
+                    {/* <button onClick={() => console.log(orders)}>cek confirmImg</button> */}
                   </div>
                   <div>
                     <SearchBar { ...props.searchProps } />

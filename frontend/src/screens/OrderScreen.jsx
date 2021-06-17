@@ -305,7 +305,7 @@ export default function OrderScreen(props) {
           <b>Pesanan dibatalkan</b>, Sudah melewati batas pembayaran, silakan <Link to="/search/name/">beli ulang</Link>
         </Alert>
       )}
-      {(isExpired && userInfo.isAdmin) && (
+      {(isExpired && userInfo.isAdmin && !order.paidAt) && (
         <Alert color="danger">
           Sudah melewati batas pembayaran
         </Alert>
@@ -320,6 +320,7 @@ export default function OrderScreen(props) {
                 {/* <div>{new Date(waktu).toString()}</div> */}
                 <p><b>Batas Waktu Pembayaran : </b>{waktu}</p>
                 {/* <button onClick={() => console.log(waktu)}>cek</button> */}
+                <h5>ID pesanan : {order._id}</h5>
                 <h3>Pengiriman</h3>
                 <p>
                   <strong>Nama :</strong> {order.shippingAddress.fullName} <br />
