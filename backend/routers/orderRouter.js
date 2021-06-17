@@ -240,6 +240,7 @@ orderRouter.put(
     if (order) {
       order.isPaid = true;
       order.paidAt = Date.now();
+      order.status = 'Menunggu Pengiriman'
       order.paymentResult = {
         id: req.body.id,
         status: req.body.status,

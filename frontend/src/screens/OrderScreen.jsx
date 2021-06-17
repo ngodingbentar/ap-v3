@@ -75,9 +75,10 @@ export default function OrderScreen(props) {
       }
     }
     if(order && !loading){
-      if(orderStatus === 'Proses'){
-        setOrderStatus(order.status)
-      }
+      // if(orderStatus === 'Proses'){
+      //   setOrderStatus(order.status)
+      // }
+      setOrderStatus(order.status)
       if(!cekCreated){
         setWaktu(new Date(Date.parse(order.createdAt)+86400000).toString().substring(4, 21))
         if((Date.parse(order.createdAt)+86400000) < sekarang){
@@ -334,7 +335,7 @@ export default function OrderScreen(props) {
                 {/* <div>{new Date(waktu).toString()}</div> */}
                 <p><b>Batas Waktu Pembayaran : </b>{waktu}</p>
                 <p><b>Status : {orderStatus}</b></p>
-                <button onClick={() => console.log(orderStatus)}>cek</button>
+                <button onClick={() => console.log(order)}>cek</button>
                 <h5>ID pesanan : {order._id}</h5>
                 <h3>Pengiriman</h3>
                 <p>
