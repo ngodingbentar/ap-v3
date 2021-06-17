@@ -68,16 +68,18 @@ export default function OrderScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     if(successOrderUpdate){
-      // console.log('successOrderUpdate')
+      console.log('successOrderUpdate')
       if(changeStatus){
+        console.log('changeStatus')
         setOrderStatus('PengecekanPembayaran')
         setChangeStatus(false)
       }
     }
     if(order && !loading){
-      // if(orderStatus === 'Proses'){
-      //   setOrderStatus(order.status)
-      // }
+      if(orderStatus === 'Proses'){
+        console.log('orderStatus = changeStatus')
+        setOrderStatus('PengecekanPembayaran')
+      }
       setOrderStatus(order.status)
       if(!cekCreated){
         setWaktu(new Date(Date.parse(order.createdAt)+86400000).toString().substring(4, 21))
@@ -106,7 +108,7 @@ export default function OrderScreen(props) {
       dispatch({ type: ORDER_BAYAR_RESET });
       dispatch(detailsOrder(orderId));
     }
-  }, [dispatch, userInfo, loading, loadingOngkir, order, orderId, successDeliver, successBayar, cekCreated, successOrderUpdate]);
+  }, [dispatch, userInfo, loading, loadingOngkir, order, orderId, successDeliver, successBayar, cekCreated, successOrderUpdate, changeStatus]);
 
   const getMyData = async (id, qty) => {
     try{
@@ -143,7 +145,7 @@ export default function OrderScreen(props) {
       confirmOrder({
         orderId: order._id,
         confirmImg: image,
-        status: 'Pengecekan Pembayaran',
+        status: 'PengecekanPembayaran',
       })
     );
   }
@@ -334,9 +336,9 @@ export default function OrderScreen(props) {
                 {/* <p>Batas Waktu Pembayaran : {new Date(waktu)}</p> */}
                 {/* <div>{new Date(waktu).toString()}</div> */}
                 <p><b>Batas Waktu Pembayaran : </b>{waktu}</p>
-                {/* <p><b>Status : {orderStatus}</b></p> */}
+                <p><b>Status1 : {orderStatus}</b></p>
                 <p>
-                  Status : 
+                  Status2 : 
                   {
                   (orderStatus === 'MenungguPembayaran') ? (<span>Menunggu Pembayaran</span>) :
                   (orderStatus === 'PengecekanPembayaran') ? (<span>Pengecekan Pembayaran</span>) :
@@ -345,7 +347,7 @@ export default function OrderScreen(props) {
                   (<span>Proses</span>)
                   }
                 </p>
-                <button onClick={() => console.log(order)}>cek</button>
+                <button onClick={() => console.log(orderStatus)}>cek</button>
                 <h5>ID pesanan : {order._id}</h5>
                 <h3>Pengiriman</h3>
                 <p>
