@@ -70,7 +70,7 @@ export default function OrderScreen(props) {
     if(successOrderUpdate){
       // console.log('successOrderUpdate')
       if(changeStatus){
-        setOrderStatus('Pengecekan Pembayaran')
+        setOrderStatus('PengecekanPembayaran')
         setChangeStatus(false)
       }
     }

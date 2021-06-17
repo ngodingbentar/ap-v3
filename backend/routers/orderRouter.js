@@ -240,7 +240,7 @@ orderRouter.put(
     if (order) {
       order.isPaid = true;
       order.paidAt = Date.now();
-      order.status = 'Menunggu Pengiriman'
+      order.status = 'MenungguPengiriman'
       order.paymentResult = {
         id: req.body.id,
         status: req.body.status,
@@ -279,7 +279,7 @@ orderRouter.put(
     if (order) {
       order.isDelivered = true;
       order.deliveredAt = Date.now();
-      order.status = 'Barang Dikirim'
+      order.status = 'BarangDikirim'
 
       const updatedOrder = await order.save();
       res.send({ message: 'Order Delivered', order: updatedOrder });

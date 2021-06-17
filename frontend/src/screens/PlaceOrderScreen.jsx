@@ -50,7 +50,7 @@ export default function PlaceOrderScreen(props) {
   cart.uniqueCode = cart.shippingAddress.uniqueCode
   cart.phone = cart.shippingAddress.phone
   cart.courierName = courierName
-  cart.status = 'Menunggu Pembayaran'
+  cart.status = 'MenungguPembayaran'
   const dispatch = useDispatch();
 
   const placeOrderHandler = () => {

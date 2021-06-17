@@ -76,8 +76,9 @@ export default function OrderListScreen(props) {
   }
 
   const selectOptions = {
-    true: 'Sudah',
-    false: 'Belum',
+    MenungguPembayaran: 'Menunggu Pembayaran',
+    BarangDikirim: 'Barang Dikirim',
+    PengecekanPembayaran: 'Pengecekan Pembayaran',
   };
 
   // table
@@ -105,21 +106,29 @@ export default function OrderListScreen(props) {
     text: 'Terlambat',
     sort: true,
     formatter: statusFormatter,
-  }, {
-    dataField: 'isPaid',
-    text: 'Terbayar',
+  },
+  // {
+  //   dataField: 'isPaid',
+  //   text: 'Terbayar',
+  //   sort: true,
+  //   formatter: paidFormatter,
+  // },
+  {
+    dataField: 'status',
+    text: 'Status',
     sort: true,
-    // formatter: paidFormatter,
     formatter: cell => selectOptions[cell],
     filter: selectFilter({
       options: selectOptions
     })
-  },{
-    dataField: 'isDelivered',
-    text: 'Dikirim',
-    sort: true,
-    formatter: paidFormatter,
-  },{
+  },
+  // {
+  //   dataField: 'isDelivered',
+  //   text: 'Dikirim',
+  //   sort: true,
+  //   formatter: paidFormatter,
+  // },
+  {
     dataField: 'confirmImg',
     text: 'Bukti',
     sort: true,
