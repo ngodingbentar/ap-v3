@@ -60,12 +60,24 @@ export default function OrderScreen(props) {
   const [cekCreated, setCekCreated] = useState(false);
   const [waktu, setWaktu] = useState(0);
   const [backLink, setBackLink] = useState('/riwayat-pesanan');
+  const [orderStatus, setOrderStatus] = useState('Proses');
+  const [changeStatus, setChangeStatus] = useState(false);
 
   const sekarang = Date.now()
 
   const dispatch = useDispatch();
   useEffect(() => {
+    if(successOrderUpdate){
+      console.log('successOrderUpdate')
+      if(changeStatus){
+        setOrderStatus('Pengecekan Pembayaran')
+        setChangeStatus(false)
+      }
+    }
     if(order && !loading){
+      if(orderStatus === 'Proses'){
+        setOrderStatus(order.status)
+      }
       if(!cekCreated){
         setWaktu(new Date(Date.parse(order.createdAt)+86400000).toString().substring(4, 21))
         if((Date.parse(order.createdAt)+86400000) < sekarang){
@@ -93,7 +105,7 @@ export default function OrderScreen(props) {
       dispatch({ type: ORDER_BAYAR_RESET });
       dispatch(detailsOrder(orderId));
     }
-  }, [dispatch, userInfo, loading, loadingOngkir, order, orderId, successDeliver, successBayar, cekCreated]);
+  }, [dispatch, userInfo, loading, loadingOngkir, order, orderId, successDeliver, successBayar, cekCreated, successOrderUpdate]);
 
   const getMyData = async (id, qty) => {
     try{
@@ -125,10 +137,12 @@ export default function OrderScreen(props) {
   };
 
   const confirmHandler = () => {
+    setChangeStatus(true)
     dispatch(
       confirmOrder({
         orderId: order._id,
         confirmImg: image,
+        status: 'Pengecekan Pembayaran',
       })
     );
   }
@@ -319,8 +333,8 @@ export default function OrderScreen(props) {
                 {/* <p>Batas Waktu Pembayaran : {new Date(waktu)}</p> */}
                 {/* <div>{new Date(waktu).toString()}</div> */}
                 <p><b>Batas Waktu Pembayaran : </b>{waktu}</p>
-                <p><b>Status : {order.status}</b></p>
-                <button onClick={() => console.log(order)}>cek</button>
+                <p><b>Status : {orderStatus}</b></p>
+                <button onClick={() => console.log(orderStatus)}>cek</button>
                 <h5>ID pesanan : {order._id}</h5>
                 <h3>Pengiriman</h3>
                 <p>

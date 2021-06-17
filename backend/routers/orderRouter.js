@@ -27,11 +27,13 @@ orderRouter.get(
 orderRouter.put(
   '/:id',
   expressAsyncHandler(async (req, res) => {
+    // console.log(req.body)
     const orderId = req.params.id;
     const order = await Order.findById(orderId);
     if (order) {
       order.confirmImg = req.body.confirmImg || order.confirmImg;
       order.resi = req.body.resi || order.resi;
+      order.status = req.body.status || order.status
       const updatedOrder = await order.save();
       res.send({ message: 'Order Updated', order: updatedOrder });
     } else {
