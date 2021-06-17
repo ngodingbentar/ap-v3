@@ -1,0 +1,79 @@
+1 Activity Diagram Daftar
+2 Activity Diagram Login
+3 Activity Diagram Logout
+4	Activity Diagram Tampil Produk
+5	Activity Diagram Detail Produk
+6	Activity Diagram Tambah ke Keranjang
+7	Activity Diagram Pemesanan
+8	Activity Diagram Pembayaran
+9	Activity Diagram Tambah Produk
+10	Activity Diagram Edit Produk
+11	Activity Diagram Hapus Produk
+12	Activity Diagram Daftar Pesanan
+13	Activity Diagram Update Profil
+14	Activity Diagram Kontak Kami
+15	Activity Diagram Panduan Belanja
+16	Activity Diagram Tentang Kami
+
+17	Activity Diagram Profil
+18	Activity Diagram Keranjang
+19	Activity Diagram Riwayat Pesanan
+20	Activity Diagram Detail Riwayat Pesanan
+21	Activity Diagram Daftar Produk
+22	Activity Diagram Daftar Pengguna
+23	Activity Diagram Detail Pesanan
+
+1	Sequence Diagram Daftar
+2	Sequence Diagram Login
+3	Sequence Diagram Logout
+4	Sequence Diagram Tampil Produk
+5	Sequence Diagram Detail Produk
+6	Sequence Diagram Tambah ke Keranjang
+7	Sequence Diagram Pemesanan
+8	Sequence Diagram Pembayaran
+9	Sequence Diagram Update Profil
+10	Sequence Diagram Tambah Produk
+11	Sequence Diagram Update Produk
+12	Sequence Diagram Hapus Produk
+13	Sequence Diagram Daftar Pesanan
+14	Sequence Diagram Kontak Kami
+15	Sequence Diagram Panduan Belanja
+16	Sequence Diagram Tentang Kami
+
+17	Sequence Diagram Profil
+18	Sequence Diagram Keranjang
+19	Sequence Diagram Riwayat Pesanan
+20	Sequence Diagram Detail Riwayat Pesanan
+21	Sequence Diagram Daftar Produk
+22	Sequence Diagram Daftar Pengguna
+23	Sequence Diagram Detail Pesanan
+
+
+ui
+1 home-
+2 Login-
+3 register-
+4 Profil-
+5 Riwayat Pesanan-
+6 detail pesanan-
+7 Keranjang-
+8 pencarian
+9 detail produk-
+10 tentang Kami-
+11 Kontak-
+12 panduan belanja-
+13 alamat pengiriman-
+14 metode Pembayaran-
+15 review pesanan-
+
+
+2 Halaman Daftar Produk
+3 Halaman Tambah Produk
+4 Halaman Edit Produk
+5 Halaman Pesanan
+6 Halaman Daftar Pengguna
+7 Halaman Detail Pesanan
+8 Halaman Kategori
+9 Halaman Tambah Kategori
+
+Your Eyes Tell
