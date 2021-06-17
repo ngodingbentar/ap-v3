@@ -279,6 +279,7 @@ orderRouter.put(
     if (order) {
       order.isDelivered = true;
       order.deliveredAt = Date.now();
+      order.status = 'Barang Dikirim'
 
       const updatedOrder = await order.save();
       res.send({ message: 'Order Delivered', order: updatedOrder });

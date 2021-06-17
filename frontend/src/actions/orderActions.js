@@ -346,6 +346,7 @@ export const bayar = (orderId) => async (dispatch, getState) => {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       }
     );
+    console.log('bayar',data)
     dispatch({ type: ORDER_BAYAR_SUCCESS, payload: data });
   } catch (error) {
     const message =

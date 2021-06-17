@@ -68,7 +68,7 @@ export default function OrderScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     if(successOrderUpdate){
-      console.log('successOrderUpdate')
+      // console.log('successOrderUpdate')
       if(changeStatus){
         setOrderStatus('Pengecekan Pembayaran')
         setChangeStatus(false)
