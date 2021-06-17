@@ -69,9 +69,7 @@ export default function OrderScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     if(successOrderUpdate){
-      console.log('successOrderUpdate')
       if(changeStatus){
-        console.log('changeStatus')
         setOrderStatus('PengecekanPembayaran')
         setmystatus('PengecekanPembayaran')
         setChangeStatus(false)
@@ -79,12 +77,8 @@ export default function OrderScreen(props) {
     }
     if(order && !loading){
       if(orderStatus === 'Proses'){
-        console.log('orderStatus = changeStatus')
         setOrderStatus(order.status)
-        // setOrderStatus('PengecekanPembayaran')
-        // setmystatus('PengecekanPembayaran')
       }
-      // setOrderStatus(order.status)
       if(!cekCreated){
         setWaktu(new Date(Date.parse(order.createdAt)+86400000).toString().substring(4, 21))
         if((Date.parse(order.createdAt)+86400000) < sekarang){
@@ -338,26 +332,22 @@ export default function OrderScreen(props) {
             <li>
               <div className="card no-border">
                 <div>
-                  {/* <p>Batas Waktu Pembayaran : {new Date(waktu)}</p> */}
-                  {/* <div>{new Date(waktu).toString()}</div> */}
-                  {/* <button onClick={() => setmystatus('PengecekanPembayaran')}>setmystatus</button> */}
-                  {/* <p>mystatus {mystatus}</p> */}
                   <h5>ID pesanan : {order._id}</h5>
-                  {!order.isPaid && (
+                  {(!order.isPaid && orderStatus !== 'PengecekanPembayaran') && (
                     <h5>Batas Waktu Pembayaran : {waktu}</h5>
                   )}
-                  {/* <p><b>Status1 : {orderStatus}</b></p> */}
-                  <h5>
-                    Status : 
-                    {
-                    (orderStatus === 'MenungguPembayaran') ? (<span>Menunggu Pembayaran</span>) :
-                    (orderStatus === 'PengecekanPembayaran') ? (<span>Pengecekan Pembayaran</span>) :
-                    (orderStatus === 'MenungguPengiriman') ? (<span>Menunggu Pengiriman</span>) :
-                    (orderStatus === 'BarangDikirim') ? (<span>Barang Dikirim</span>) :
-                    (<span>Proses</span>)
-                    }
-                  </h5>
-                  {/* <button onClick={() => console.log(orderStatus)}>cek</button> */}
+                  {!userInfo.isAdmin && (
+                    <h5>
+                      Status : 
+                      {
+                      (orderStatus === 'MenungguPembayaran') ? (<span>Menunggu Pembayaran</span>) :
+                      (orderStatus === 'PengecekanPembayaran') ? (<span>Pengecekan Pembayaran</span>) :
+                      (orderStatus === 'MenungguPengiriman') ? (<span>Menunggu Pengiriman</span>) :
+                      (orderStatus === 'BarangDikirim') ? (<span>Barang Dikirim</span>) :
+                      (<span>Proses</span>)
+                      }
+                    </h5>
+                  )}
                 </div>
                 
                 <h3 className="mt-4">Pengiriman</h3>

@@ -178,7 +178,7 @@ export default function OrderListScreen(props) {
                 <div className="rowC">
                   <div>
                     <h3>Daftar Pesanan</h3>
-                    <button onClick={() => console.log(orders)}>cek confirmImg</button>
+                    {/* <button onClick={() => console.log(orders)}>cek confirmImg</button> */}
                   </div>
                   <div>
                     <SearchBar { ...props.searchProps } />
