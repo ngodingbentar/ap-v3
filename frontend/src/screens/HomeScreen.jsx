@@ -101,13 +101,13 @@ export default function HomeScreen() {
           </div>
         </>
       )}
-      {packet && packet.length > 0 && (
+      {/* {packet && packet.length > 0 && (
         <div className="row my-4 center">
           <Link to="/search/name/paket">
             <Button color="secondary">Selengkapnya</Button>
           </Link>
         </div>
-      )}
+      )} */}
       <hr/>
 
       <div className="row mt-4 center">
