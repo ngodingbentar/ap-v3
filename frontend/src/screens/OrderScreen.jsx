@@ -389,7 +389,7 @@ export default function OrderScreen(props) {
                 <p>
                   Rekening: <b>{order.paymentMethod}</b>
                 </p>
-                {(!isExpired) && (
+                {/* {(!isExpired) && (
                   <span>
                     <p>Atas Nama : <b>Aruspinggir</b></p>
                     <p>Nomor Rekening : {''}
@@ -406,7 +406,7 @@ export default function OrderScreen(props) {
                       </b>
                     </p>
                   </span>
-                )}
+                )} */}
                 {order.isPaid ? (
                   <MessageBox variant="success">
                     Terbayar pada {order.paidAt.substring(0, 10)}
