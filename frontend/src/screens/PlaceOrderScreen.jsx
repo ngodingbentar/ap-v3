@@ -19,9 +19,9 @@ export default function PlaceOrderScreen(props) {
   const [courierName, setCourierName] = useState();
   const [loadingBiaya, setLoadingBiaya] = useState(true);
 
-  if (!cart.paymentMethod) {
-    props.history.push('/payment');
-  }
+  // if (!cart.paymentMethod) {
+  //   props.history.push('/payment');
+  // }
   const orderCreate = useSelector((state) => state.orderCreate);
   const { loading, success, error, order } = orderCreate;
 

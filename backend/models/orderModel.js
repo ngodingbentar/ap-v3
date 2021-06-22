@@ -25,7 +25,7 @@ const orderSchema = new mongoose.Schema(
       lat: Number,
       lng: Number,
     },
-    paymentMethod: { type: String, required: true },
+    paymentMethod: { type: String, required: false },
     paymentResult: {
       id: String,
       status: String,
