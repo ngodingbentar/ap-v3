@@ -157,10 +157,9 @@ export default function PlaceOrderScreen(props) {
                 </p>
               </div>
             </li>
-            <li>
+            {/* <li>
               <div className="card card-body">
                 <h4>Pembayaran</h4>
-                {/* <hr/> */}
                 <p>
                   <strong>Bank:</strong> {cart.paymentMethod} - {''}
                   {cart.paymentMethod === 'BCA' ? (
@@ -174,7 +173,7 @@ export default function PlaceOrderScreen(props) {
                   )}
                 </p>
               </div>
-            </li>
+            </li> */}
             <li>
               <div className="card card-body">
                 <h4>Produk</h4>

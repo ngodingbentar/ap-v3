@@ -192,6 +192,7 @@ export default function ProductEditScreen(props) {
               <div>
                 <label htmlFor="category">Kategori</label>
                 <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                  <option>--Pilih Kategori--</option>
                   {
                     categories.map( (x) => (
                       <option key={x._id} value={ x.name}>{ x.name }</option>
