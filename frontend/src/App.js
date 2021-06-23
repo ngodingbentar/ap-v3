@@ -31,8 +31,8 @@ import CategoryCreateScreen from './screens/CategoryCreateScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import { ContactScreen } from './screens/ContactScreen';
 import GuideScreen from './screens/GuideScreen';
-// import NavbarCompNew from './components/NavbarCompNew';
-import NavbarCompSimple from './components/NavbarCompSimple';
+import NavbarCompNew from './components/NavbarCompNew';
+// import NavbarCompSimple from './components/NavbarCompSimple';
 import NotFoundScreen from './screens/404';
 // import Register from './screens/Register';
 
@@ -47,8 +47,8 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         {/* <NavbarComp/> */}
-        {/* <NavbarCompNew/> */}
-        <NavbarCompSimple />
+        <NavbarCompNew/>
+        {/* <NavbarCompSimple /> */}
         
         <main className="main-section container-custom">
           <Switch>
