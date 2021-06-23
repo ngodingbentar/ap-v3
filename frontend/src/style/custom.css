@@ -168,6 +168,14 @@ a.no-under:hover {
   font-size: x-large;
 }
 
+.simple-nav-li{
+  padding: 10px;
+}
+.simple-nav-icon{
+  color: white;
+  font-size: 30px;
+}
+
 .nav-brand {
   margin-top: -1px;
 }
@@ -180,6 +188,28 @@ a.no-under:hover {
 }
 
 /* search  */
+.search-simple{
+  padding: 10px;
+  margin: auto 0;
+  margin-right: 10px;
+  justify-content: center;
+}
+
+.search-simple input{
+  /* border-radius: 10px 0px 0px 10px !important; */
+  border-radius: 0px !important;
+  width: 270px;
+}
+
+ul.my-simple-nav-ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 6px;
+  text-decoration: none;
+}
+
+
 .search button {
   border-radius: 0 0.5rem 0.5rem 0;
   border-right: none;
@@ -281,6 +311,7 @@ a.no-under:hover {
 .mx-4 {
   margin: 0 4rem;
 }
+
 .pl-4 {
   padding-left: 4rem;
 }
@@ -476,11 +507,57 @@ img.imgNotfound{
 .hover-white a:hover{
   color: white !important;
 }
-@media only screen and (min-width: 768px) {
+
+.my-simple-nav{
+  padding: 0 4rem;
+}
+
+ul.my-simple-nav-ul {
+  list-style-type: none;
+  margin: 0;
+  /* padding: 0; */
+  overflow: hidden;
   
 }
 
+ul.my-simple-nav-ul li {
+  float: left;
+}
+
+ul.my-simple-nav-ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+ul.my-simple-nav-ul li a:hover{
+  background-color: none;
+  color: white !important;
+}
+
+/* li a:hover:not(.nav-active) {
+  background-color: #111;
+} */
+
+/* .nav-active {
+  background-color: #04AA6D;
+} */
+
+
+@media only screen and (min-width: 700px) {
+
+}
+
 @media only screen and (max-width: 600px) {
+  .search-simple input{
+    max-width: 170px;
+  }
+  .my-simple-nav{
+    padding: 0 2rem;
+  }
   .img-container {
     width: 40%;
   }
@@ -492,5 +569,29 @@ img.imgNotfound{
   }
   .product-right{
     display: block;
+  }
+  .ap-logo-full{
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .ap-logo-simple{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .search-simple input{
+    max-width: 170px;
+  }
+  ul.my-simple-nav-ul li a {
+    padding: 17px 6px;
+  }
+  .simple-nav-icon {
+    font-size: 25px;
+  }
+  .my-simple-nav{
+    padding: 0 20px;
   }
 }

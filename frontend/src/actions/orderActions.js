@@ -146,7 +146,7 @@ export const listProvince = () => async (dispatch, getState) => {
 
 
 export const createOrder = (order) => async (dispatch, getState) => {
-  console.log(order)
+  // console.log(order)
   dispatch({ type: ORDER_CREATE_REQUEST, payload: order });
   try {
     const {
