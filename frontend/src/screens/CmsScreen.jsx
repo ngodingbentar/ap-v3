@@ -53,7 +53,9 @@ class Welcome extends React.Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       title: 'titlee',
-      banner: 'https://aruspinggir-bucket.s3.ap-southeast-1.amazonaws.com/1.PNG'
+      banner: 'https://aruspinggir-bucket.s3.ap-southeast-1.amazonaws.com/1.PNG',
+      categories: [],
+      category: ''
     };
   }
 
@@ -65,38 +67,73 @@ class Welcome extends React.Component {
   };
 
   changeTitle: Function = (e) => {
-    console.log('eee',e)
+    // console.log('eee',e)
     this.setState ({
       title: e,
     })
   };
 
   changeBanner: Function = (e) => {
-    console.log('eee',e)
+    // console.log('eee',e)
     this.setState ({
       banner: e,
     })
+  };
+
+  setCategory: Function = (e) => {
+    // console.log('eee',e)
+    this.setState ({
+      category: e,
+    })
+  };
+
+  cek: Function = () => {
+    // console.log('this.state.categories', this.state.categories)
+    this.state.categories.map( (x) => (
+      console.log(x.name)
+    ))
+  };
+
+  getCategory: Function = async (e) => {
+    try{
+        const url = `https://vercel-be-v2.vercel.app/api/v1/category`
+        const result = await Axios.get(`${url}`);
+        // console.log('result', result)
+        this.setState ({
+          categories: result.data,
+        })
+      }catch(err){
+        console.log(err)
+      }
   };
 
   submit: Function = async (e) => {
     const newValues = {
       title: this.state.title,
       banner: this.state.banner,
-      body: e
+      body: e,
+      category: this.state.category
     }
-    console.log('newValues', newValues)
+    // console.log('newValues', newValues)
     try{
-        const url = `https://vercel-be-v2.vercel.app/api/v1/blog`
-        const result = await Axios.post(url, newValues);
-        console.log('result', result)
-      }catch(err){
-        console.log(err)
+      const url = `https://vercel-be-v2.vercel.app/api/v1/blog`
+      const result = await Axios.post(url, newValues);
+      // console.log('result', result)
+      if(result.status === 201){
+        alert('berhasil')
       }
+    }catch(err){
+      console.log(err)
+    }
   };
+
+  componentDidMount(){
+    this.getCategory()
+  }
 
 
   render() {
-    const { editorState, title } = this.state;
+    const { editorState } = this.state;
     const rawContentState = convertToRaw(editorState.getCurrentContent());
  
     const markup = draftToHtml(
@@ -120,9 +157,24 @@ class Welcome extends React.Component {
         <input
           id="banner"
           type="text"
-          placeholder="Enter title"
+          placeholder="Enter banner"
           onChange={(e) => this.changeBanner(e.target.value)}
         ></input>
+      </div>
+      <div>
+        {this.state.categories && (
+          <div>
+            <label htmlFor="category">Kategori</label>
+            <select value={this.state.category} onChange={(e) => this.setCategory(e.target.value)}>
+              <option>--Pilih Kategori--</option>
+              {
+                this.state.categories.map( (x) => (
+                  <option key={x._id} value={ x.name}>{ x.name }</option>
+                ))
+              }
+            </select>
+          </div>
+        )}
       </div>
       <hr/>
       <Editor
@@ -140,8 +192,8 @@ class Welcome extends React.Component {
       
       {/* <p>{title}</p> */}
       <button onClick={()=> this.submit(markup)}>Submit</button>
-      <button onClick={()=> console.log(this.state)}>cek</button>
-      <button onClick={()=> console.log(markup)}>cek markup</button>
+      {/* <button onClick={()=> this.cek()}>cek</button>
+      <button onClick={()=> console.log(markup)}>cek markup</button> */}
     </div>;
   }
 }

@@ -7,6 +7,7 @@ import { createNewProduct } from '../actions/productActions';
 
 export default function UpImageComp(props) {
   const [image, setImage] = useState('');
+  const [images, setImages] = useState([]);
   const [createLoading, setCreateLoading] = useState(false);
   const productCreateNew = useSelector((state) => state.productCreateNew);
   const { error, success } = productCreateNew;
@@ -21,6 +22,16 @@ export default function UpImageComp(props) {
 
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [errorUpload, setErrorUpload] = useState('');
+
+  const text = '["Ford"]';
+  const myArr = JSON.parse(text);
+
+  const getParse = () => {
+    console.log(text)
+    console.log(myArr)
+    images.push(image)
+    console.log(images)
+  }
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
@@ -39,6 +50,7 @@ export default function UpImageComp(props) {
           })
           .then((response) => {
             setImage(response.data);
+            images.push(response.data)
             setLoadingUpload(false);
           })
           .catch((err) => {
@@ -79,10 +91,22 @@ export default function UpImageComp(props) {
         <div>
           {image && (
             <>
-              <p>{image}</p>
+              {/* <p>image : {image}</p> */}
+              <hr/>
+              {images && (
+                <>
+                  {
+                    images.map((x, index) => (
+                      <p>{index+1} - {x}</p>
+                    ))
+                  }
+                </>
+              )}
               <img className="small" src={image} alt="img"/>
             </>
           )}
+          {/* <button onClick={() => console.log(images)}>cek</button>
+          <button onClick={() => getParse()}>parse</button> */}
         </div>
     </div>
   );
