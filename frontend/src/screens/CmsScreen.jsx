@@ -6,6 +6,8 @@ import stateToHTML from 'draftjs-to-html'
 import draftToHtml from 'draftjs-to-html';
 import { convertToRaw } from 'draft-js';
 import Axios from 'axios';
+import UpImageComp from '../components/UpImageComp';
+
 
 function uploadImageCallBack(file) {
   return new Promise(
@@ -35,22 +37,23 @@ function uploadImageCallBack(file) {
 //   console.log('this.state', this.state)
 // }
 
-const submit = async (e) => {
-  console.log('ec', e)
-  // try{
-  //   const url = `https://vercel-be-v2.vercel.app/api/v1/blog`
-  //   const result = await Axios.post(url);
-  // }catch(err){
-  //   console.log(err)
-  // }
-}
+// const submit = async (e) => {
+//   console.log('ec', e)
+//   try{
+//     const url = `https://vercel-be-v2.vercel.app/api/v1/blog`
+//     const result = await Axios.post(url);
+//   }catch(err){
+//     console.log(err)
+//   }
+// }
 
 class Welcome extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       editorState: EditorState.createEmpty(),
-      title: 'titlee'
+      title: 'titlee',
+      banner: 'https://aruspinggir-bucket.s3.ap-southeast-1.amazonaws.com/1.PNG'
     };
   }
 
@@ -67,6 +70,31 @@ class Welcome extends React.Component {
       title: e,
     })
   };
+
+  changeBanner: Function = (e) => {
+    console.log('eee',e)
+    this.setState ({
+      banner: e,
+    })
+  };
+
+  submit: Function = async (e) => {
+    const newValues = {
+      title: this.state.title,
+      banner: this.state.banner,
+      body: e
+    }
+    console.log('newValues', newValues)
+    try{
+        const url = `https://vercel-be-v2.vercel.app/api/v1/blog`
+        const result = await Axios.post(url, newValues);
+        console.log('result', result)
+      }catch(err){
+        console.log(err)
+      }
+  };
+
+
   render() {
     const { editorState, title } = this.state;
     const rawContentState = convertToRaw(editorState.getCurrentContent());
@@ -76,6 +104,27 @@ class Welcome extends React.Component {
     );
 
     return <div>
+      <UpImageComp />
+      <hr/>
+      <div>
+        <label htmlFor="title">title</label>
+        <input
+          id="title"
+          type="text"
+          placeholder="Enter title"
+          onChange={(e) => this.changeTitle(e.target.value)}
+        ></input>
+      </div>
+      <div>
+        <label htmlFor="banner">banner</label>
+        <input
+          id="banner"
+          type="text"
+          placeholder="Enter title"
+          onChange={(e) => this.changeBanner(e.target.value)}
+        ></input>
+      </div>
+      <hr/>
       <Editor
         editorState={editorState}
         onEditorStateChange={this.onEditorStateChange}    
@@ -88,18 +137,11 @@ class Welcome extends React.Component {
           image: { uploadCallback: uploadImageCallBack, alt: { present: true, mandatory: true } },
         }}
       />
-      <div>
-        <label htmlFor="title">title</label>
-        <input
-          id="title"
-          type="title"
-          placeholder="Enter title"
-          onChange={(e) => this.changeTitle(e.target.value)}
-        ></input>
-      </div>
-      <p>{title}</p>
-      {/* <button onClick={()=> submit(markup)}>cek</button> */}
+      
+      {/* <p>{title}</p> */}
+      <button onClick={()=> this.submit(markup)}>Submit</button>
       <button onClick={()=> console.log(this.state)}>cek</button>
+      <button onClick={()=> console.log(markup)}>cek markup</button>
     </div>;
   }
 }
