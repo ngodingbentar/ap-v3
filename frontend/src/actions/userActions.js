@@ -25,6 +25,7 @@ import {
 
 
 export const signin = (email, password) => async (dispatch) => {
+  // console.log(email, password)
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
     const { data } = await Axios.post('/api/users/signin', { email, password });

@@ -34,6 +34,7 @@ import GuideScreen from './screens/GuideScreen';
 import NavbarCompNew from './components/NavbarCompNew';
 // import NavbarCompSimple from './components/NavbarCompSimple';
 import NotFoundScreen from './screens/404';
+import CmsScreen from './screens/CmsScreen';
 // import Register from './screens/Register';
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <main className="main-section container-custom">
           <Switch>
             <Route exact path="/tentang" component={AboutScreen}></Route>
+            <Route exact path="/blog/cms" component={CmsScreen}></Route>
             <Route exact path="/panduan-belanja" component={GuideScreen}></Route>
             <Route exact path="/layout" component={LayoutScreen}></Route>
             <PrivateRoute path="/cart/:id?" exact component={CartScreen}></PrivateRoute>
