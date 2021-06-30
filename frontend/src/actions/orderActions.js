@@ -102,18 +102,18 @@ export const biayaOngkirTiki = (ongkirId, weight) => async (dispatch, getState) 
 };
 
 export const cekResi = (awb, ekspedisi) => async (dispatch, getState) => {
-  console.log(awb)
-  // dispatch({ type: ORDER_ONGKIR_REQUEST });
-  // try {
-  //   const { data } = await Axios.get(`/api/orders/cekresi/${awb}/${ekspedisi}`);
-  //   dispatch({ type: ORDER_ONGKIR_SUCCESS, payload: data });
-  // } catch (error) {
-  //   const message =
-  //     error.response && error.response.data.message
-  //       ? error.response.data.message
-  //       : error.message;
-  //   dispatch({ type: ORDER_ONGKIR_FAIL, payload: message });
-  // }
+  // console.log(awb)
+  dispatch({ type: ORDER_ONGKIR_REQUEST });
+  try {
+    const { data } = await Axios.get(`/api/orders/cekresi/${awb}/${ekspedisi}`);
+    dispatch({ type: ORDER_ONGKIR_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: ORDER_ONGKIR_FAIL, payload: message });
+  }
 };
 
 export const listCityId = (provId) => async (dispatch, getState) => {

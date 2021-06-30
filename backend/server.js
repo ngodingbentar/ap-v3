@@ -15,7 +15,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-Mongoose.connect(process.env.MONGODB_URL_LOCAL || process.env.MONGODB_URL || 'mongodb+srv://aruspinggir:admin@ecommerce.iclbk.mongodb.net/test', {
+Mongoose.connect(process.env.MONGODB_URL_LOCAL || process.env.MONGODB_URL , {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

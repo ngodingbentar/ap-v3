@@ -1,19 +1,10 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import Categories from '../models/categoriesModel.js';
-import data from '../data.js';
 // import { isAdmin, isAuth } from '../utils.js';
 
 const categoriesRouter = express.Router()
 
-categoriesRouter.get('/seed',
-  expressAsyncHandler(async (req, res) => {
-    //remove previous data
-    // await User.remove({})
-    const createdCategories = await Categories.insertMany(data.categories)
-    res.send({createdCategories})
-  })
-)
 
 categoriesRouter.get(
   '/',

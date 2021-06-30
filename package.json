@@ -1,23 +1,15 @@
 {
-  "name": "amazona",
+  "name": "aruspinggir",
   "type": "module",
   "version": "1.0.0",
-  "description": "Ecommerce website like amazon",
+  "description": "Ecommerce website - aruspinggir",
   "main": "index.js",
   "scripts": {
     "build": "cd frontend && npm install && npm run build",
     "dev": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/basir/amazona.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/basir/amazona/issues"
-  },
-  "homepage": "https://github.com/basir/amazona#readme",
   "dependencies": {
     "aws-sdk": "2.868.0",
     "axios": "^0.21.1",
