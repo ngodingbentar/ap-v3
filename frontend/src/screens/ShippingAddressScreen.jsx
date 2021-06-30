@@ -69,8 +69,8 @@ export default function ShippingAddressScreen(props) {
           uniqueCode
         })
       );
-      // props.history.push('/payment');
-      props.history.push('/placeorder');
+      props.history.push('/payment');
+      // props.history.push('/placeorder');
     }
   };
 
