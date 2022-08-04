@@ -1,5 +1,0 @@
-01:31:26 error: invariant failed: you should not use <Link> outside a <Router>
-01:44:53 warning: to load an ES module, set "type": "module" in the package.json
-04:51:04 "message": "Cannot read property 'email' of undefined"
-
-saat tambah produk ke keranjang jika produknya sama
